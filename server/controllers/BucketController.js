@@ -21,11 +21,11 @@ exports.createbucket = asyncErrorHandler(async (req, res, next) => {
 // get all buckets 
 // Get All Products ---ADMIN
 exports.getallbuckets = asyncErrorHandler(async (req, res, next) => {
-    const products = await Product.find();
+    const buckets = await Bucket.find();
 
     res.status(200).json({
         success: true,
-        products,
+        buckets,
     });
 });
 
@@ -49,14 +49,7 @@ exports.createCard = asyncErrorHandler(async (req, res, next) => {
     });
 });
 // get all cards. 
-exports.getallbuckets = asyncErrorHandler(async (req, res, next) => {
-    const products = await Product.find();
 
-    res.status(200).json({
-        success: true,
-        products,
-    });
-});
 // update card. 
 // delete card. 
 // get card details

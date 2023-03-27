@@ -29,6 +29,13 @@ exports.newCard = asyncErrorHandler(async (req, res, next) => {
     });
 });
 
+// ----------------------------------
+
+
+// update card. 
+// delete card. 
+// get card details
+
 // get all cards. 
 exports.getallcards = asyncErrorHandler(async (req, res, next) => {
 
@@ -65,20 +72,6 @@ exports.getSingleCardDetails = asyncErrorHandler(async (req, res, next) => {
 });
 
 
-// Get Logged In User Cards
-exports.getallcards = asyncErrorHandler(async (req, res, next) => {
-
-    const orders = await Order.find({ user: req.user._id });
-
-    if (!orders) {
-        return next(new ErrorHandler("Order Not Found", 404));
-    }
-
-    res.status(200).json({
-        success: true,
-        orders,
-    });
-});
 
 
 // Delete Card
