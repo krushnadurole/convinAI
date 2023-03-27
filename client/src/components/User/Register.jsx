@@ -84,7 +84,7 @@ const Register = () => {
             dispatch(clearErrors());
         }
         if (isAuthenticated) {
-            navigate('/products')
+            navigate('/')
         }
     }, [navigate,localStorage.getItem('userInfo'),dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
 

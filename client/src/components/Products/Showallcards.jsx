@@ -1,15 +1,17 @@
 import React from 'react'
-import { CreateBucket, clearErrors } from '../../actions/productAction';
+import { getallcards, clearErrors } from '../../actions/productAction';
 
 const Showallcards = () => {
 
     useEffect(() => {
-        getbuckets();
-    }, [third])
+        getallcards();
+    }, [])
     
 
   return (
-    <div>Showallcards</div>
+    <div>
+      showalllcards
+    </div>
   )
 }
 
