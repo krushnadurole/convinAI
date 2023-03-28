@@ -5,8 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
-import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
-import { CreateBucket, clearErrors } from '../../actions/productAction';
+import { NEW_BUCKET_RESET } from '../../constants/BucketConstants';
+import { CreateBucket, clearErrors } from '../../actions/BucketAction';
 import ImageIcon from '@mui/icons-material/Image';
 // import { categories } from '../../utils/constants';
 import MetaData from '../Layouts/MetaData';
@@ -17,7 +17,7 @@ const AddBucket = () => {
     const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
 
-    const { loading, success, error } = useSelector((state) => state.newProduct);
+    const { loading, success, error } = useSelector((state) => state.newCard);
     
     
     const [bucketname,setbucketname] = useState("");
@@ -40,7 +40,6 @@ const AddBucket = () => {
         formData.set("description", description);
         formData.set("artist", artist);
         formData.set("bucketname", bucketname);
-        // formData.set("singer", singer);
         dispatch(CreateBucket(formData));
     }
 
@@ -51,7 +50,7 @@ const AddBucket = () => {
         }
         if (success) {
             enqueueSnackbar("Product Created", { variant: "success" });
-            dispatch({ type: NEW_PRODUCT_RESET });
+            dispatch({ type: NEW_BUCKET_RESET });
             navigate("/admin/products");
         }
     }, [dispatch, error, success, navigate, enqueueSnackbar]);

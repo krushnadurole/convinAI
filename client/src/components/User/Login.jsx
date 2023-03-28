@@ -33,7 +33,7 @@ const Login = () => {
             dispatch(clearErrors());
         }
         if (isAuthenticated) {
-            navigate(`/${redirect}`)
+            navigate(`/addbucket`)
         }
     }, [dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
 

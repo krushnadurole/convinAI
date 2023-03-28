@@ -1,70 +1,51 @@
 import {
-    ADMIN_PRODUCTS_FAIL,
-    ADMIN_PRODUCTS_REQUEST,
-    ADMIN_PRODUCTS_SUCCESS,
-    ALL_PRODUCTS_FAIL,
-    ALL_PRODUCTS_REQUEST,
-    ALL_PRODUCTS_SUCCESS,
-    CLEAR_ERRORS,
-    DELETE_PRODUCT_FAIL,
-    DELETE_PRODUCT_REQUEST,
-    DELETE_PRODUCT_RESET,
-    DELETE_PRODUCT_SUCCESS,
-    NEW_PRODUCT_FAIL,
-    NEW_PRODUCT_REQUEST,
-    NEW_PRODUCT_RESET,
-    NEW_PRODUCT_SUCCESS,
-    NEW_REVIEW_FAIL,
-    NEW_REVIEW_REQUEST,
-    NEW_REVIEW_RESET,
-    NEW_REVIEW_SUCCESS,
-    PRODUCT_DETAILS_FAIL,
-    PRODUCT_DETAILS_REQUEST,
-    PRODUCT_DETAILS_SUCCESS,
-    UPDATE_PRODUCT_FAIL,
-    UPDATE_PRODUCT_REQUEST,
-    UPDATE_PRODUCT_RESET,
-    UPDATE_PRODUCT_SUCCESS,
-    REMOVE_PRODUCT_DETAILS,
-    ALL_REVIEWS_REQUEST,
-    ALL_REVIEWS_SUCCESS,
-    ALL_REVIEWS_FAIL,
-    DELETE_REVIEW_REQUEST,
-    DELETE_REVIEW_SUCCESS,
-    DELETE_REVIEW_RESET,
-    DELETE_REVIEW_FAIL,
-    SLIDER_PRODUCTS_FAIL,
-    SLIDER_PRODUCTS_REQUEST,
-    SLIDER_PRODUCTS_SUCCESS,
-} from "../constants/productConstants";
+    ALL_CARDS_FAIL,
+    ALL_CARDS_REQUEST,
+    ALL_CARDS_SUCCESS,
 
-export const productsReducer = (state = { products: [] }, { type, payload }) => {
+
+    CARD_DETAILS_REQUEST,
+    CARD_DETAILS_SUCCESS,
+    CARD_DETAILS_FAIL,
+    
+    CLEAR_ERRORS,
+    
+    NEW_CARD_REQUEST,
+    NEW_CARD_SUCCESS,
+    NEW_CARD_FAIL,
+    NEW_CARD_RESET,
+
+    UPDATE_CARD_REQUEST,
+    UPDATE_CARD_SUCCESS,
+    UPDATE_CARD_FAIL,
+    UPDATE_CARD_RESET,
+
+    DELETE_CARD_REQUEST,
+    DELETE_CARD_SUCCESS,
+    DELETE_CARD_FAIL,
+    DELETE_CARD_RESET,
+
+} from "../constants/CardConstants";
+
+export const newCardReducer = (state = { products: [] }, { type, payload }) => {
 
     switch (type) {
-        case ALL_PRODUCTS_REQUEST:
-        case ADMIN_PRODUCTS_REQUEST:
-        case SLIDER_PRODUCTS_REQUEST:
+        case ALL_CARDS_REQUEST:
             return {
                 loading: true,
                 products: [],
             };
-        case ALL_PRODUCTS_SUCCESS:
+        case ALL_CARDS_SUCCESS:
             return {
                 loading: false,
-                products: payload.products,
-                productsCount: payload.productsCount,
-                resultPerPage: payload.resultPerPage,
-                filteredProductsCount: payload.filteredProductsCount,
+               
             };
-        case ADMIN_PRODUCTS_SUCCESS:
-        case SLIDER_PRODUCTS_SUCCESS:
+        case NEW_CARDS_SUCCESS:
             return {
                 loading: false,
                 products: payload,
             };
-        case ALL_PRODUCTS_FAIL:
-        case ADMIN_PRODUCTS_FAIL:
-        case SLIDER_PRODUCTS_FAIL:
+        case NEW_CARDS_FAIL:
             return {
                 loading: false,
                 error: payload,
@@ -82,22 +63,22 @@ export const productsReducer = (state = { products: [] }, { type, payload }) => 
 export const productDetailsReducer = (state = { product: {} }, { type, payload }) => {
 
     switch (type) {
-        case PRODUCT_DETAILS_REQUEST:
+        case CARD_DETAILS_REQUEST:
             return {
                 ...state,
                 loading: true,
             };
-        case PRODUCT_DETAILS_SUCCESS:
+        case CARD_DETAILS_SUCCESS:
             return {
                 loading: false,
                 product: payload,
             };
-        case PRODUCT_DETAILS_FAIL:
+        case CARD_DETAILS_FAIL:
             return {
                 loading: false,
                 error: payload,
             };
-        case REMOVE_PRODUCT_DETAILS:
+        case REMOVE_CARD_DETAILS:
             return {
                 ...state,
                 product: {},
@@ -149,24 +130,24 @@ export const newReviewReducer = (state = {}, { type, payload }) => {
 // New Product Reducer
 export const newProductReducer = (state = { product: {} }, { type, payload }) => {
     switch (type) {
-        case NEW_PRODUCT_REQUEST:
+        case NEW_CARD_REQUEST:
             return {
                 ...state,
                 loading: true,
             };
-        case NEW_PRODUCT_SUCCESS:
+        case NEW_CARD_SUCCESS:
             return {
                 loading: false,
                 success: payload.success,
                 product: payload.product,
             };
-        case NEW_PRODUCT_FAIL:
+        case NEW_CARD_FAIL:
             return {
                 ...state,
                 loading: false,
                 error: payload,
             };
-        case NEW_PRODUCT_RESET:
+        case NEW_CARD_RESET:
             return {
                 ...state,
                 success: false,
@@ -184,37 +165,37 @@ export const newProductReducer = (state = { product: {} }, { type, payload }) =>
 // New Product Reducer
 export const productReducer = (state = {}, { type, payload }) => {
     switch (type) {
-        case UPDATE_PRODUCT_REQUEST:
-        case DELETE_PRODUCT_REQUEST:
+        case UPDATE_CARD_REQUEST:
+        case DELETE_CARD_REQUEST:
             return {
                 ...state,
                 loading: true,
             };
-        case UPDATE_PRODUCT_SUCCESS:
+        case UPDATE_CARD_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 isUpdated: payload,
             };
-        case DELETE_PRODUCT_SUCCESS:
+        case DELETE_CARD_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 isDeleted: payload,
             };
-        case UPDATE_PRODUCT_FAIL:
-        case DELETE_PRODUCT_FAIL:
+        case UPDATE_CARD_FAIL:
+        case DELETE_CARD_FAIL:
             return {
                 ...state,
                 loading: false,
                 error: payload,
             };
-        case UPDATE_PRODUCT_RESET:
+        case UPDATE_CARD_RESET:
             return {
                 ...state,
                 isUpdated: false,
             };
-        case DELETE_PRODUCT_RESET:
+        case DELETE_CARD_RESET:
             return {
                 ...state,
                 isDeleted: false,
