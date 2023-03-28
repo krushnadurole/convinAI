@@ -34,7 +34,7 @@ import {
 } from "../constants/productConstants";
 
 
-// add the bu
+// add the buckets
 export const CreateBucket = (productData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_PRODUCT_REQUEST });
@@ -52,52 +52,11 @@ export const CreateBucket = (productData) => async (dispatch) => {
         });
     }
 }
-// Get All Products --- Filter/Search/Sort
-export const getProducts =
-    (keyword = "", category, price = [0, 200000], ratings = 0, currentPage = 1) => async (dispatch) => {
-        try {
-            dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-            let url = `http://localhost:4000/api/v1/products/all`;
-            if (category) {
-                url = `http://localhost:4000/api/v1/products/all`;
-            }
-            const { data } = await axios.get(url);
-            console.log(data);
-            dispatch({
-                type: ALL_PRODUCTS_SUCCESS,
-                payload: data,
-            });
-        } catch (error) {
-            dispatch({
-                type: ALL_PRODUCTS_FAIL,
-                payload: error.response.data.message,
-            });
-        }
-    };
-export const getbuckets =
-    (keyword = "", category, price = [0, 200000], ratings = 0, currentPage = 1) => async (dispatch) => {
-        try {
-            dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-            let url = `http://localhost:4000/api/v1/products/all`;
-            if (category) {
-                url = `http://localhost:4000/api/v1/products/all`;
-            }
-            const { data } = await axios.get(url);
-            console.log(data);
-            dispatch({
-                type: ALL_PRODUCTS_SUCCESS,
-                payload: data,
-            });
-        } catch (error) {
-            dispatch({
-                type: ALL_PRODUCTS_FAIL,
-                payload: error.response.data.message,
-            });
-        }
-    };
-export const getallcards =
+
+// Get All Products
+export const getBuckets =
     (keyword = "", category, price = [0, 200000], ratings = 0, currentPage = 1) => async (dispatch) => {
         try {
             dispatch({ type: ALL_PRODUCTS_REQUEST });
@@ -120,27 +79,74 @@ export const getallcards =
         }
     };
 
-// Get All Products Of Same Category
-export const getSimilarProducts = (category) => async (dispatch) => {
-    try {
-        dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/products?category=${category}`);
+    // delete bucket
+// export const getbuckets =(keyword = "", category, price = [0, 200000], ratings = 0, currentPage = 1) => async (dispatch) => {
+//         try {
+//             dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        dispatch({
-            type: ALL_PRODUCTS_SUCCESS,
-            payload: data,
-        });
-    } catch (error) {
-        dispatch({
-            type: ALL_PRODUCTS_FAIL,
-            payload: error.response.data.message,
-        });
-    }
-};
+//             let url = `http://localhost:4000/api/v1/products/all`;
+//             if (category) {
+//                 url = `http://localhost:4000/api/v1/products/all`;
+//             }
+//             const { data } = await axios.get(url);
+//             console.log(data);
+//             dispatch({
+//                 type: ALL_PRODUCTS_SUCCESS,
+//                 payload: data,
+//             });
+//         } catch (error) {
+//             dispatch({
+//                 type: ALL_PRODUCTS_FAIL,
+//                 payload: error.response.data.message,
+//             });
+//         }
+//     };
 
-// Get Product Details
-export const getProductDetails = (id) => async (dispatch) => {
+export const getallcards =(keyword = "", category, price = [0, 200000], ratings = 0, currentPage = 1) => async (dispatch) => {
+        try {
+            dispatch({ type: ALL_PRODUCTS_REQUEST });
+
+            let url = `http://localhost:4000/api/v1/products/all`;
+            if (category) {
+                url = `http://localhost:4000/api/v1/products/all`;
+            }
+            const { data } = await axios.get(url);
+            console.log(data);
+            dispatch({
+                type: ALL_PRODUCTS_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: ALL_PRODUCTS_FAIL,
+                payload: error.response.data.message,
+            });
+        }
+    };
+
+// export const getSimilarProducts = (category) => async (dispatch) => {
+//     try {
+//         dispatch({ type: ALL_PRODUCTS_REQUEST });
+
+//         const { data } = await axios.get(`/api/v1/products?category=${category}`);
+
+//         dispatch({
+//             type: ALL_PRODUCTS_SUCCESS,
+//             payload: data,
+//         });
+//     } catch (error) {
+//         dispatch({
+//             type: ALL_PRODUCTS_FAIL,
+//             payload: error.response.data.message,
+//         });
+//     }
+// };
+
+
+
+// Get bucket Details
+export const getBucketDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
@@ -159,63 +165,63 @@ export const getProductDetails = (id) => async (dispatch) => {
 };
 
 // New/Update Review
-export const newReview = (reviewData) => async (dispatch) => {
-    try {
-        dispatch({ type: NEW_REVIEW_REQUEST });
-        const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.put("http://localhost:4000/api/v1/review", reviewData, config);
+// export const newReview = (reviewData) => async (dispatch) => {
+//     try {
+//         dispatch({ type: NEW_REVIEW_REQUEST });
+//         const config = { header: { "Content-Type": "application/json" } }
+//         const { data } = await axios.put("http://localhost:4000/api/v1/review", reviewData, config);
 
-        dispatch({
-            type: NEW_REVIEW_SUCCESS,
-            payload: data.success,
-        });
-    } catch (error) {
-        dispatch({
-            type: NEW_REVIEW_FAIL,
-            payload: error.response.data.message,
-        });
-    }
-}
+//         dispatch({
+//             type: NEW_REVIEW_SUCCESS,
+//             payload: data.success,
+//         });
+//     } catch (error) {
+//         dispatch({
+//             type: NEW_REVIEW_FAIL,
+//             payload: error.response.data.message,
+//         });
+//     }
+// }
 
 // Get All Products ---PRODUCT SLIDER
-export const getSliderProducts = () => async (dispatch) => {
-    try {
-        dispatch({ type: SLIDER_PRODUCTS_REQUEST });
+// export const getSliderProducts = () => async (dispatch) => {
+//     try {
+//         dispatch({ type: SLIDER_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get('http://localhost:4000/api/v1/products/all');
+//         const { data } = await axios.get('http://localhost:4000/api/v1/products/all');
 
-        dispatch({
-            type: SLIDER_PRODUCTS_SUCCESS,
-            payload: data.products,
-        });
-    } catch (error) {
-        dispatch({
-            type: SLIDER_PRODUCTS_FAIL,
-            payload: error.response.data.message,
-        });
-    }
-};
+//         dispatch({
+//             type: SLIDER_PRODUCTS_SUCCESS,
+//             payload: data.products,
+//         });
+//     } catch (error) {
+//         dispatch({
+//             type: SLIDER_PRODUCTS_FAIL,
+//             payload: error.response.data.message,
+//         });
+//     }
+// };
 
 // Get All Products ---ADMIN
-export const getAdminProducts = () => async (dispatch) => {
-    try {
-        dispatch({ type: ADMIN_PRODUCTS_REQUEST });
+// export const getAdminProducts = () => async (dispatch) => {
+//     try {
+//         dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get('http://localhost:4000/api/v1/admin/products');
+//         const { data } = await axios.get('http://localhost:4000/api/v1/admin/products');
 
-        dispatch({
-            type: ADMIN_PRODUCTS_SUCCESS,
-            payload: data.products,
-        });
-    } catch (error) {
-        dispatch({
-            type: ADMIN_PRODUCTS_FAIL,
-            payload: error.response.data.message,
-        });
-    }
-};
+//         dispatch({
+//             type: ADMIN_PRODUCTS_SUCCESS,
+//             payload: data.products,
+//         });
+//     } catch (error) {
+//         dispatch({
+//             type: ADMIN_PRODUCTS_FAIL,
+//             payload: error.response.data.message,
+//         });
+//     }
+// };
 
-// New Product ---ADMIN
+// Create bucket
 export const createProduct = (productData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_PRODUCT_REQUEST });
@@ -234,8 +240,8 @@ export const createProduct = (productData) => async (dispatch) => {
     }
 }
 
-// Update Product ---ADMIN
-export const updateProduct = (id, productData) => async (dispatch) => {
+// Update bucket
+export const updateBucket = (id, productData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PRODUCT_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
@@ -253,7 +259,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     }
 }
 
-// Delete Product ---ADMIN
+// Delete bucket
 export const deleteProduct = (id) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_PRODUCT_REQUEST });
