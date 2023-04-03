@@ -1,4 +1,3 @@
-const Cookies = require('js-cookie')
 const User = require('../models/userModel');
 const asyncErrorHandler = require('../middlewares/asyncErrorHandler');
 const sendToken = require('../utils/sendToken');
@@ -31,6 +30,7 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
 
     sendToken(user, 201, res);
 });
+
 // Login User
 exports.loginUser = asyncErrorHandler(async (req, res, next) => {
     const { email, password } = req.body;
@@ -40,9 +40,7 @@ exports.loginUser = asyncErrorHandler(async (req, res, next) => {
     }
 
     const user = await User.findOne({ email}).select("+password");
-    // console.log("token",user.token);
-    Cookies.set('token',user.token);
-    // console.log("cookies : ",req.cookies.token)
+
     if(!user) {
         return next(new ErrorHandler("Invalid Email or Password", 401));
     }

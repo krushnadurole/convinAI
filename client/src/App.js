@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import NotFound from './components/NotFound';
 import AddCard from './components/Products/AddCard';
 import AddBucket from './components/Products/AddBucket';
+import Home from './components/Home';
 // import './components/Home/Home.css'
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
       <br></br>
       <br></br>
       <Routes>
+        <Route path='/' element={<Home/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/addcard" element={<AddCard/>} />

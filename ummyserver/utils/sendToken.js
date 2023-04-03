@@ -1,4 +1,3 @@
-const Cookies  =  require('js-cookie'); 
 const sendToken = (user, statusCode, res) => {
     const token = user.getJWTToken();
 
@@ -8,7 +7,7 @@ const sendToken = (user, statusCode, res) => {
         ),
         httpOnly: true
     }
-    Cookies.set('token', token);
+
     res.status(statusCode).cookie('token', token, options).json({
         success: true,
         user,

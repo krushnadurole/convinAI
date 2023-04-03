@@ -3,12 +3,12 @@ import persistConfig from './persistConfig';
 // import { createStore,  applyMiddleware } from 'redux';
 import {  combineReducers } from 'redux';
 import {  userReducer } from './reducers/userReducer';
-import {  newCardReducer } from './reducers/newCardReducer';
+import {  cardreducer } from './reducers/cardreducer';
 
 
 const rootReducer = combineReducers({
     user: userReducer,
-    newCard:newCardReducer
+    newCard:cardreducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

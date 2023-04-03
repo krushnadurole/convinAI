@@ -18,18 +18,18 @@ const AddBucket = () => {
     const navigate = useNavigate();
 
     const { loading, success, error } = useSelector((state) => state.newCard);
-    
-    
-    const [bucketname,setbucketname] = useState("");
-    const [buckets,setbuckets] = useState([]);
+    const { isAuthenticatedUser } = useSelector((state) => state.user);
+
+    const [bucketname, setbucketname] = useState("");
+    const [buckets, setbuckets] = useState([]);
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [artist, setArtist] = useState("");
     const [image, setimage] = useState("");
-    
+
     const [totalcount, settotalcount] = useState("");
-    
+
 
 
     const newProductSubmitHandler = (e) => {
@@ -109,7 +109,7 @@ const AddBucket = () => {
                             value={bucketname}
                             onChange={(e) => setbucketname(e.target.value)}
                         >
-                          
+
                         </TextField>
                         {/* <TextField
                             label="singer"
@@ -125,7 +125,7 @@ const AddBucket = () => {
                             value={singer}
                             onChange={(e) => setSinger(e.target.value)}
                         /> */}
-                       
+
                     </div>
 
                     <div className="flex flex-col gap-2">
@@ -157,12 +157,12 @@ const AddBucket = () => {
                             value={singer}
                             onChange={(e) => setSinger(e.target.value)}
                         /> */}
-                        {/* <div className="w-24 h-10 flex items-center justify-center border rounded-lg">
+                    {/* <div className="w-24 h-10 flex items-center justify-center border rounded-lg">
                             {!logoPreview ? <ImageIcon /> :
                                 <img draggable="false" src={logoPreview} alt="Brand Logo" className="w-full h-full object-contain" />
                             }
                         </div> */}
-                        {/* <label className="rounded bg-gray-400 text-center cursor-pointer text-white py-2 px-2.5 shadow hover:shadow-lg">
+                    {/* <label className="rounded bg-gray-400 text-center cursor-pointer text-white py-2 px-2.5 shadow hover:shadow-lg">
                             <input
                                 type="file"
                                 name="logo"
@@ -175,17 +175,17 @@ const AddBucket = () => {
                     {/* </div> */}
 
                 </div>
-{/* 
+                {/* 
                 <div className="flex flex-col gap-2 m-2 sm:w-1/2">
                     <h2 className="font-medium">Specifications</h2> */}
 
-                    {/* <div className="flex justify-evenly gap-2 items-center">
+                {/* <div className="flex justify-evenly gap-2 items-center">
                         <TextField value={specsInput.title} onChange={handleSpecsChange} name="title" label="Name" placeholder="Model No" variant="outlined" size="small" />
                         <TextField value={specsInput.description} onChange={handleSpecsChange} name="description" label="Description" placeholder="WJDK42DF5" variant="outlined" size="small" />
                         <span onClick={() => addSpecs()} className="py-2 px-6 bg-primary-blue text-white rounded hover:shadow-lg cursor-pointer">Add</span>
                     </div> */}
 
-                    {/* <div className="flex flex-col gap-1.5">
+                {/* <div className="flex flex-col gap-1.5">
                         {specs.map((spec, i) => (
                             <div className="flex justify-between items-center text-sm rounded bg-blue-50 py-1 px-2">
                                 <p className="text-gray-500 font-medium">{spec.title}</p>
@@ -197,13 +197,13 @@ const AddBucket = () => {
                         ))}
                     </div> */}
 
-                    {/* <h2 className="font-medium">Product Images</h2>
+                {/* <h2 className="font-medium">Product Images</h2>
                     <div className="flex gap-2 overflow-x-auto h-32 border rounded">
                         {imagesPreview.map((image, i) => (
                             <img draggable="false" src={image} alt="Product" key={i} className="w-full h-full object-contain" />
                         ))}
                     </div> */}
-                    {/* <label className="rounded font-medium bg-gray-400 text-center cursor-pointer text-white p-2 shadow hover:shadow-lg my-2">
+                {/* <label className="rounded font-medium bg-gray-400 text-center cursor-pointer text-white p-2 shadow hover:shadow-lg my-2">
                         <input
                             type="file"
                             name="images"
@@ -215,8 +215,8 @@ const AddBucket = () => {
                         Choose Files
                     </label> */}
 
-                    {/* <div className="flex justify-end">
-                        <input form="mainform" type="submit" className="bg-primary-orange uppercase w-1/3 p-3 text-white font-medium rounded shadow hover:shadow-lg cursor-pointer" value="Submit" />
+                <input form="mainform" type="submit" className="bg-primary-orange uppercase w-1/3 p-3 text-white font-medium rounded shadow hover:shadow-lg cursor-pointer" value="Submit" />
+                {/* <div className="flex justify-end">
                     </div> */}
 
                 {/* </div> */}
@@ -228,7 +228,7 @@ const AddBucket = () => {
 }
 
 export default AddBucket
-    {/* Hello
+{/* Hello
     <Icon baseClassName="fas" className="fa-plus-circle" fontSize="small" />
 
     <Button

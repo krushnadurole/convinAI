@@ -1,15 +1,13 @@
 import {
-    ALL_CARDS_FAIL,
     ALL_CARDS_REQUEST,
+    ALL_CARDS_FAIL,
     ALL_CARDS_SUCCESS,
-
-
     CARD_DETAILS_REQUEST,
     CARD_DETAILS_SUCCESS,
     CARD_DETAILS_FAIL,
-    
+    ALL_CARD_FAIL,
     CLEAR_ERRORS,
-    
+    REMOVE_CARD_DETAILS,
     NEW_CARD_REQUEST,
     NEW_CARD_SUCCESS,
     NEW_CARD_FAIL,
@@ -27,7 +25,7 @@ import {
 
 } from "../constants/CardConstants";
 
-export const newCardReducer = (state = { products: [] }, { type, payload }) => {
+export const cardreducer = (state = { products: [] }, { type, payload }) => {
 
     switch (type) {
         case ALL_CARDS_REQUEST:
@@ -40,12 +38,13 @@ export const newCardReducer = (state = { products: [] }, { type, payload }) => {
                 loading: false,
                
             };
-        case NEW_CARDS_SUCCESS:
+        case NEW_CARD_SUCCESS:
             return {
                 loading: false,
                 products: payload,
             };
-        case NEW_CARDS_FAIL:
+        case NEW_CARD_FAIL:
+        case ALL_CARD_FAIL:
             return {
                 loading: false,
                 error: payload,
@@ -94,38 +93,38 @@ export const productDetailsReducer = (state = { product: {} }, { type, payload }
 }
 
 // New Review Reducer
-export const newReviewReducer = (state = {}, { type, payload }) => {
-    switch (type) {
-        case NEW_REVIEW_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
-        case NEW_REVIEW_SUCCESS:
-            return {
-                loading: false,
-                success: payload,
-            };
-        case NEW_REVIEW_FAIL:
-            return {
-                ...state,
-                loading: false,
-                error: payload,
-            };
-        case NEW_REVIEW_RESET:
-            return {
-                ...state,
-                success: false,
-            };
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            };
-        default:
-            return state;
-    }
-}
+// export const newReviewReducer = (state = {}, { type, payload }) => {
+//     switch (type) {
+//         case NEW_REVIEW_REQUEST:
+//             return {
+//                 ...state,
+//                 loading: true,
+//             };
+//         case NEW_REVIEW_SUCCESS:
+//             return {
+//                 loading: false,
+//                 success: payload,
+//             };
+//         case NEW_REVIEW_FAIL:
+//             return {
+//                 ...state,
+//                 loading: false,
+//                 error: payload,
+//             };
+//         case NEW_REVIEW_RESET:
+//             return {
+//                 ...state,
+//                 success: false,
+//             };
+//         case CLEAR_ERRORS:
+//             return {
+//                 ...state,
+//                 error: null,
+//             };
+//         default:
+//             return state;
+//     }
+// }
 
 // New Product Reducer
 export const newProductReducer = (state = { product: {} }, { type, payload }) => {
@@ -210,65 +209,65 @@ export const productReducer = (state = {}, { type, payload }) => {
     }
 }
 
-export const productReviewsReducer = (state = { reviews: [] }, { type, payload }) => {
+// export const productReviewsReducer = (state = { reviews: [] }, { type, payload }) => {
 
-    switch (type) { 
-        case ALL_REVIEWS_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
-        case ALL_REVIEWS_SUCCESS:
-            return {
-                loading: false,
-                reviews: payload,
-            };
-        case ALL_REVIEWS_FAIL:
-            return {
-                ...state,
-                loading: false,
-                error: payload,
-            };
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            };
-        default:
-            return state;
-    }
-}
+//     switch (type) { 
+//         case ALL_REVIEWS_REQUEST:
+//             return {
+//                 ...state,
+//                 loading: true,
+//             };
+//         case ALL_REVIEWS_SUCCESS:
+//             return {
+//                 loading: false,
+//                 reviews: payload,
+//             };
+//         case ALL_REVIEWS_FAIL:
+//             return {
+//                 ...state,
+//                 loading: false,
+//                 error: payload,
+//             };
+//         case CLEAR_ERRORS:
+//             return {
+//                 ...state,
+//                 error: null,
+//             };
+//         default:
+//             return state;
+//     }
+// }
 
-export const reviewReducer = (state = {}, { type, payload }) => {
+// export const reviewReducer = (state = {}, { type, payload }) => {
 
-    switch (type) {
-        case DELETE_REVIEW_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
-        case DELETE_REVIEW_SUCCESS:
-            return {
-                loading: false,
-                isDeleted: payload,
-            };
-        case DELETE_REVIEW_FAIL:
-            return {
-                ...state,
-                loading: false,
-                error: payload,
-            };
-        case DELETE_REVIEW_RESET:
-            return {
-                ...state,
-                isDeleted: false,
-            };
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            };
-        default:
-            return state;
-    }
-}
+//     switch (type) {
+//         case DELETE_REVIEW_REQUEST:
+//             return {
+//                 ...state,
+//                 loading: true,
+//             };
+//         case DELETE_REVIEW_SUCCESS:
+//             return {
+//                 loading: false,
+//                 isDeleted: payload,
+//             };
+//         case DELETE_REVIEW_FAIL:
+//             return {
+//                 ...state,
+//                 loading: false,
+//                 error: payload,
+//             };
+//         case DELETE_REVIEW_RESET:
+//             return {
+//                 ...state,
+//                 isDeleted: false,
+//             };
+//         case CLEAR_ERRORS:
+//             return {
+//                 ...state,
+//                 error: null,
+//             };
+//         default:
+//             return state;
+//     }
+// }
